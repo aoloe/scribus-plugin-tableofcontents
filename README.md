@@ -37,8 +37,12 @@ Not all details on the way this plugins should work are already defined. But her
 
 - define each level of the TOC with a source and a target style.
   - it might be possible to set multiple source styles for each level; or define that each style that is derived from a style has to be considered.
+  - a character styles should be possible for each level and
+    - text
+    - tab (the dots)
+    - the page number
+    - (eventually also the chapter number, once and if it's automotatic)
 - allow collecting entries from other files.
-- it should be possible to define several tables of contents.
 - it is not yet defined, how the update of the table of contents work.
   - with the current model you have to delete the curent table of contents and insert a new one.
   - with the scribus-ece model (defining a target frame in the document settings) you have to know the name of the frame.
@@ -51,11 +55,16 @@ Not all details on the way this plugins should work are already defined. But her
 - The old property based table of contents should probably be removed.
 - Depending on how it's implemented, the table of contents should be updated by the "Document update" command (or it should be an option in the TOC configuration)
 - We probably need one char style for each part of the toc line; optionally a char style for each part on each level of the toc line. (if none defined none applied)
-- When creating a new level, it duplicates the values for the current one?
+- A "plus" button allows to create new levels
+  - When creating a new level, it duplicates the values for the current one?
+  - Levels are named (chapter, ...)
+- Multiple indipendent tocs should be possible
+  - It should be easy to switch among the tocs and update all of them.
 - As soon as we have real pdf links, optionally add a link (and define a ref: we will have to make sure that we don't delete manual refs)
 - Add a non modal dialog, where one can see the TOC and jump to chapters.
   - A settings button could open the "Document settings" window with the TOC tab active. (or show only that tab)
 - Tab, space or vspace between title and number.
+- Per level option to show or not the page number
 - Instead of typing the target's frame name use four buttons:
   - "link" current frame
   - "unlink" used frame
@@ -63,9 +72,17 @@ Not all details on the way this plugins should work are already defined. But her
   - append to this frame
 - it should be compatible with CTL.
 
+### Advanced ideas
+
+
+- In a book where you have multiple writers you might want their names to appear in the TOC, below the ChapterName, but with no page number associated to it. This can be solved by defining a fake level (with no page number)... but, maybe, there is a better solution.
+- Option to ignore the local formatting (which ones?) in the titles
+- Allow to grap the titles by char styles instead of paragraph styles
+
 Corner cases:
 
 - what happens if a style is renamed?
+- per level option to remove soft returns in the title.
 
 ### Remarks  on Cezary's implementation
 
