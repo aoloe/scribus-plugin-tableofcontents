@@ -23,7 +23,7 @@ Clone the `scribus-plugin-tableofcontents` repository and put – or symlink –
 
 to `CMakeList.txt` file in `scribus/plugins/`.
 
-You will need compiler that defaults to C++11 or enable C++11 in your `cmake` command.
+You will need a compiler that defaults to C++11 or enable C++11 in your `cmake` command.
 
 ## Development
 
