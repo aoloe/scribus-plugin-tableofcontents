@@ -27,9 +27,9 @@ You will need a compiler that defaults to C++11 or enable C++11 in your `cmake` 
 
 ## Development
 
-We have a Doxygen documentation of the code:
+We will have a Doxygen documentation of the code:
 
-<http://impagina.org/dox/epub-export/>
+<http://impagina.org/dox/tableofcontents/>
 
 ### Ideas
 
