@@ -23,6 +23,8 @@ Clone the `scribus-plugin-tableofcontents` repository and put – or symlink –
 
 to `CMakeList.txt` file in `scribus/plugins/`.
 
+You will need compiler that defaults to C++11 or enable C++11 in your `cmake` command.
+
 ## Development
 
 We have a Doxygen documentation of the code:
@@ -67,9 +69,11 @@ Corner cases:
 
 ### Remarks  on Cezary's implementation
 
-Cezary already implemented a styles
+Cezary already implemented a styles based table of contents:
 
 ![Screenshot of Cezary's Table of Contents' options](resources/images/toc-ece.png)
+
+Some comments on his UI:
 
 - It would be nice to see all levels at once.
 - There is no need to see/set the level's names (it's just a sequence).
