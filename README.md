@@ -23,6 +23,8 @@ Clone the `scribus-plugin-tableofcontents` repository and put – or symlink –
 
 to `CMakeList.txt` file in `scribus/plugins/`.
 
+In the [Getting started](https://github.com/aoloe/scribus-manual-development/blob/master/content/getting-started/getting-started.md) manual for Scribus developers, you'll find [more in details instructions](https://github.com/aoloe/scribus-manual-development/blob/master/content/getting-started/getting-started.md#adding-a-plugin-from-a-github-repository).
+
 You will need a compiler that defaults to C++11 or enable C++11 in your `cmake` command.
 
 ## Development
@@ -97,6 +99,13 @@ Some comments on his UI:
 - It should be possible to move up and down the levels.
 
 ## Todo
+
+Next steps:
+
+- Create a dialog with a dynamic list of widgets.
+- Add API methods for storing and retreiveing settings.
+
+Other tasks:
 
 - apply the styles to the toc.
 - make sure that the full title is read if there are local formatting or character styles.
