@@ -4,6 +4,7 @@ Scan the document for styles named "h1", "h3", "h3" and append to the current te
 
 This plugin is still in its very early stages. Please read the rest of this README for understanding how it works and how it will evolve.
 
+Create the table of content by selecting the text frame where you want it to appear and run "Insert > Table of Contents".
 
 This plugin is heavily inspired by the `scribus/tocgenerator.cpp` created by Cezary and available in [Scribus-ece](https://github.com/AlterScribus/ece15).
 
