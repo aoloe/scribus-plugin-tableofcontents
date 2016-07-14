@@ -65,6 +65,12 @@ Not all details on the way this plugins should work are already defined. But her
   - in the settings for a newly created frame type.
 - The old property based table of contents should probably be removed.
 - Depending on how it's implemented, the table of contents should be updated by the "Document update" command (or it should be an option in the TOC configuration)
+- If the TOC is not automatically updated, we could add a new "checkable" item to the preflight verifier:
+  - as soon as a TOC has been inserted
+  - add an item at the top of the preflight verifier with two choices:
+    - OK
+    - Don't bother me
+ - We can use the same mechanism for other things that the user is supposed to maually check before exporting to PDF (and the user could add his own personal entrie)
 - We probably need one char style for each part of the toc line; optionally a char style for each part on each level of the toc line. (if none defined none applied)
 - A "plus" button allows to create new levels
   - When creating a new level, it duplicates the values for the current one?
@@ -82,6 +88,7 @@ Not all details on the way this plugins should work are already defined. But her
   - "go to" frame
   - append to this frame
 - it should be compatible with CTL.
+- The scripter API should be extend to create custom TOCs.
 
 ### Advanced ideas
 
