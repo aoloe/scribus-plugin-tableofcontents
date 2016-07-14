@@ -34,6 +34,14 @@ We will have a Doxygen documentation of the code:
 
 <http://impagina.org/dox/tableofcontents/>
 
+### How can you help?
+
+We need:
+
+- Somebody coordinating the UI / UX (which features should be implemented? how should the user interact with the table of contents).
+- Somebody creating the Qt Designer UI files.
+- Testers (as soone as we have binaries to be downloaded)
+
 ### Ideas
 
 Not all details on the way this plugins should work are already defined. But here is the direction we want to take:
