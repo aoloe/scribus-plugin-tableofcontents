@@ -14,7 +14,7 @@ Currently, the "Table of Contents" plugin just appends the table of contents to 
 
 The paragraphs with the styles "h1", "h2", and "h3" get collected and they are inserted with the styles "toc1", "toc2", and "toc3".
 
-In order to run it you have to:
+In order to run the plugin you have to:
 
 - Create the styles "h1", "h2", "h3", "toc1", "toc2", "toc3".
 - Apply the style "h1", "h2", "h3" to some paragraphs.
