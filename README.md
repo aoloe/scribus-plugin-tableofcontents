@@ -10,9 +10,16 @@ This plugin is heavily inspired by the `scribus/tocgenerator.cpp` created by Cez
 
 ## Features
 
-Currently, the "Table of Contents" plugin just appends a table of contents to the content of the selected text frame.
+Currently, the "Table of Contents" plugin just appends the table of contents to the selected text frame.
 
 The paragraphs with the styles "h1", "h2", and "h3" get collected and they are inserted with the styles "toc1", "toc2", and "toc3".
+
+In order to run it you have to:
+
+- Create the styles "h1", "h2", "h3", "toc1", "toc2", "toc3".
+- Apply the style "h1", "h2", "h3" to some paragraphs.
+- Create a new text frame and select it.
+- Select the new text frame and run "Insert > Table of Contents"
 
 ## Install
 
