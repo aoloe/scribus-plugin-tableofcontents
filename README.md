@@ -112,6 +112,9 @@ Some comments on his UI:
 Next steps:
 
 - Create a dialog with a dynamic list of widgets.
+  - check <https://doc.qt.io/archives/qq/qq19-buttons.html> for adding buttons to the buttonbox.
+  - check <http://doc.qt.io/qt-5/model-view-programming.html> for the qviewlist with items.
+  - hints to make the combobox editable: <http://stackoverflow.com/questions/25275599/qt-combobox-readable-but-editable>
 - Add API methods for storing and retreiveing settings.
 
 Other tasks:
