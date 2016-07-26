@@ -94,6 +94,8 @@ Not all details on the way this plugins should work are already defined. But her
   - "unlink" used frame
   - "go to" frame
   - append to this frame
+- Or should the TOC configuration be done in the Styles manager?
+- Some TOC entries might be without page numbers.
 - it should be compatible with CTL.
 - The scripter API should be extend to create custom TOCs.
 
