@@ -140,3 +140,4 @@ Other tasks:
 - keep italics, subscript and superscript in the title (and eventually other formatting)
 - create a dialog with basic choices (styles?)
 - enhance the dialog with all the whistles and bells.
+- find out if it's possible to use a plugin to participate in the pdf generation (and add the toc to the pdf "informations")

@@ -104,13 +104,27 @@ bool TableOfContents::doAppend()
 	}
 	qDebug() << "toc" << toc;
 
+/*
+    ScribusAPIDocumentItem* frame = scribusDocument->getCurrentItem();
+	if (frame &&  frame->isTextFrame())
+    {
+        if (style.type == "paragraph")
+            frame->getText()->applyParagraphStyle(style.name);
+        else if (style.type == "character")
+            frame->getText()->applyCharacterStyle(style.name);
+    }
+*/
+
+
+
+
 	ScribusAPIDocumentItemText* tocFrameText = tocFrame->getText();
 	foreach (TableOfContentsItem item, toc)
 	{
 		// @todo: make it CTL compatible
 		// @todo: add the special chars to the API
-		QString tocLine = item.title + SpecialChars::TAB + item.pageNumber;
-		tocFrameText->appendParagraph(tocLine /*, parstyle */);
+		QString tocLine = item.title + SpecialChars::TAB + item.pageNumber + " ("+item.tocStyleName+")";
+		tocFrameText->appendParagraph(tocLine , item.tocStyleName);
 
 		// ParagraphStyle pstyle;
 		// pstyle.setParent(levelSetup.textStyle);
