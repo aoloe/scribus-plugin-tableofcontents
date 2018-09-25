@@ -1,8 +1,12 @@
+#include "plugin.h"
+
 #include "tableofcontents.h"
-#include "tableofcontentsplugin.h"
 
 #include "scribuscore.h"
 #include "scribusdoc.h"
+
+#include "plugins/scribusAPI/scribus.h"
+#include "plugins/scribusAPI/document.h"
 
 int tableofcontentsplugin_getPluginAPIVersion()
 {
@@ -11,31 +15,34 @@ int tableofcontentsplugin_getPluginAPIVersion()
 
 ScPlugin* tableofcontentsplugin_getPlugin()
 {
-	TableOfContentsPlugin* plug = new TableOfContentsPlugin();
+	auto plug = new ScribusPlugin::TableOfContents::Plugin();
 	Q_CHECK_PTR(plug);
 	return plug;
 }
 
 void tableofcontentsplugin_freePlugin(ScPlugin* plugin)
 {
-	TableOfContentsPlugin* plug = dynamic_cast<TableOfContentsPlugin*>(plugin);
+	auto plug = dynamic_cast<ScribusPlugin::TableOfContents::Plugin*>(plugin);
 	Q_ASSERT(plug);
 	delete plug;
 }
 
-TableOfContentsPlugin::TableOfContentsPlugin() : ScActionPlugin()
+namespace ScribusPlugin {
+namespace TableOfContents {
+
+Plugin::Plugin() : ScActionPlugin()
 {
 	// Set action info in languageChange, so we only have to do
 	// it in one place.
 	languageChange();
 }
 
-TableOfContentsPlugin::~TableOfContentsPlugin()
+Plugin::~Plugin()
 {
 	// unregisterAll();
 };
 
-void TableOfContentsPlugin::languageChange()
+void Plugin::languageChange()
 {
 	// Note that we leave the unused members unset. They'll be initialised
 	// with their default ctors during construction.
@@ -49,12 +56,12 @@ void TableOfContentsPlugin::languageChange()
 	m_actionInfo.needsNumObjects = -1;
 }
 
-const QString TableOfContentsPlugin::fullTrName() const
+const QString Plugin::fullTrName() const
 {
 	return QObject::tr("Table of Contents");
 }
 
-const ScActionPlugin::AboutData* TableOfContentsPlugin::getAboutData() const
+const ScActionPlugin::AboutData* Plugin::getAboutData() const
 {
 	AboutData* about = new AboutData;
 	about->authors = "Ale Rimoldi <a.l.e@ideale.ch>";
@@ -65,7 +72,7 @@ const ScActionPlugin::AboutData* TableOfContentsPlugin::getAboutData() const
 	return about;
 }
 
-void TableOfContentsPlugin::deleteAboutData(const AboutData* about) const
+void Plugin::deleteAboutData(const AboutData* about) const
 {
 	Q_ASSERT(about);
 	delete about;
@@ -79,16 +86,22 @@ void TableOfContentsPlugin::deleteAboutData(const AboutData* about) const
  * @todo:
  * - do not show the dialog if Scribus runs in "server" mode.
  */
-bool TableOfContentsPlugin::run(ScribusDoc* doc, QString target)
+bool Plugin::run(ScribusDoc* doc, const QString& target)
 {
 
 	Q_ASSERT(target.isNull());
-	ScribusDoc* currDoc=doc;
-	if (currDoc == 0)
-		currDoc = ScCore->primaryMainWindow()->doc;
-	if (currDoc == 0)
-		return false;
+    auto document = ScribusAPI::Scribus::getActiveDocument(doc);
 
+    if (!document.isOpen()) {
+        return false;
+    }
+
+    return true;
+
+	auto toc = ScribusPlugin::TableOfContents::TableOfContents(document);
+    return toc.doAppend();
+
+    /*
 	TableOfContents *tableofcontents = new TableOfContents();
 
 	tableofcontents->setScribusDocument(currDoc);
@@ -96,4 +109,8 @@ bool TableOfContentsPlugin::run(ScribusDoc* doc, QString target)
 	bool success = tableofcontents->doAppend();
 	delete tableofcontents;
 	return success;
+    */
+}
+
+} // ScribusPlugin::TableOfContents
 }

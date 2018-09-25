@@ -1,14 +1,23 @@
-#include <QDebug>
-
 #include "tableofcontents.h"
+
 #include "scribusdoc.h"
 
+#include "plugins/scribusAPI/document.h"
+#include "plugins/scribusAPI/textFrame.h"
+#include "plugins/scribusAPI/textFormatting.h"
+/*
 #include "plugins/scribusAPI/scribusAPI.h"
 #include "plugins/scribusAPI/scribusAPIDocument.h"
 #include "plugins/scribusAPI/scribusAPIDocumentItem.h"
 #include "plugins/scribusAPI/scribusAPIDocumentItemText.h"
 #include "plugins/scribusAPI/scribusAPIDocumentItemTextFormatting.h"
+*/
 
+namespace ScribusPlugin {
+namespace TableOfContents {
+
+
+/*
 TableOfContents::TableOfContents()
 {
     // progressDialog = 0;
@@ -17,10 +26,13 @@ TableOfContents::TableOfContents()
     // qDebug() << "marksList" << this->doc->get()->marksList();
     // qDebug() << "notesList" << this->doc->get()->notesList();
 }
+*/
 
+/*
 TableOfContents::~TableOfContents()
 {
 }
+*/
 
 /**
  * @brief append the table of contents to the seleted text frame.
@@ -30,8 +42,37 @@ TableOfContents::~TableOfContents()
  */
 bool TableOfContents::doAppend()
 {
-    // qDebug() << "options" << options;
+	auto documentItem = document.getActiveItem();
 
+    // documentItem is optional
+    if (!documentItem.has_value()) {
+        return false;
+    }
+
+    if (!documentItem->isTextFrame()) {
+        return false;
+    }
+
+    auto tocFrame = documentItem->getTextFrame();
+
+    std::vector<Item> toc{};
+
+    for (int page = 0; page < document.getPageCount(); page++) {
+		auto pageNumber = document.getPageNumber(page);
+		for (auto& item: document.getPageItems(page)) {
+			if (!item.isTextFrame()) {
+				continue;
+            }
+			// TODO: skip items that are not on the page
+			// TODO: skip items that are not printable (layer too!)
+			ScribusAPI::TextFormatting formatting{item};
+			for (auto run: item.getTextFrame().getRuns())
+			{
+            }
+        }
+    }
+
+    /*
     ScribusAPIDocument* scribusDocument = new ScribusAPIDocument(this->scribusDoc);
 
 	ScribusAPIDocumentItem* tocFrame = scribusDocument->getCurrentItem();
@@ -104,16 +145,14 @@ bool TableOfContents::doAppend()
 	}
 	qDebug() << "toc" << toc;
 
-/*
-    ScribusAPIDocumentItem* frame = scribusDocument->getCurrentItem();
-	if (frame &&  frame->isTextFrame())
-    {
-        if (style.type == "paragraph")
-            frame->getText()->applyParagraphStyle(style.name);
-        else if (style.type == "character")
-            frame->getText()->applyCharacterStyle(style.name);
-    }
-*/
+    // ScribusAPIDocumentItem* frame = scribusDocument->getCurrentItem();
+	// if (frame &&  frame->isTextFrame())
+    // {
+    //     if (style.type == "paragraph")
+    //         frame->getText()->applyParagraphStyle(style.name);
+    //     else if (style.type == "character")
+    //         frame->getText()->applyCharacterStyle(style.name);
+    // }
 
 
 
@@ -133,11 +172,13 @@ bool TableOfContents::doAppend()
 	tocFrame->render();
 	scribusDocument->render();
 	// m_doc->regionsChanged()->render(QRect());
+    */
 
 	return true;
 
 }
 
+/*
 QDebug operator<<(QDebug dbg, const TableOfContentsOptions options)
 {
     // dbg.nospace() << "(targetFilename:" << options.targetFilename;
@@ -160,4 +201,8 @@ QDebug operator<<(QDebug dbg, const TableOfContentsItem item)
     dbg.nospace() << ", tocStyleName:" << item.tocStyleName;
     dbg.nospace() << ", pageNumber:" << item.pageNumber;
     return dbg.space();
+}
+*/
+
+} // ScribusPlugin::TableOfContents
 }

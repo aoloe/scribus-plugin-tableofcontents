@@ -5,59 +5,69 @@
 #ifndef TABLEOFCONTENTS_H
 #define TABLEOFCONTENTS_H
 
-#include <QObject>
-#include <QVector>
+#include <string>
+#include <vector>
+
+#include "plugins/scribusAPI/document.h"
 
 class ScribusDoc;
+
+namespace ScribusPlugin {
+namespace TableOfContents {
 
 /**
  * @brief The options for the Epub export, as defined in the Export dialog.
  */
-struct TableOfContentsOptions
+struct Options
 {
     // QString targetTextFrame;
-    QVector<QString> headingStyles;
-    QVector<QString> tocStyles;
-    TableOfContentsOptions()
+    std::vector<std::string> headingStyles;
+    std::vector<std::string> tocStyles;
+
+    Options()
     {
         // targetTextFrame = "";
-		headingStyles << "h1" << "h2" << "h3";
-		tocStyles << "toc1" << "toc2" << "toc3";
+		// headingStyles << "h1" << "h2" << "h3";
+		// tocStyles << "toc1" << "toc2" << "toc3";
     }
 };
 
-struct TableOfContentsItem
+struct Item
 {
-	QString title;
+	std::string title;
 	int level;
-	QString tocStyleName;
-	QString pageNumber;
+	std::string tocStyleName;
+	std::string pageNumber;
 };
 
 
 /**
  * @brief This is the main table of contents class. It gets called by `TableOfContentsPlugin` after the the export dialog.
  */
-class TableOfContents : public QObject
+class TableOfContents
 {
-    Q_OBJECT
+    public:
+        TableOfContents(ScribusAPI::Document &document)
+        : document{document}
+        {}
+        ~TableOfContents() {}
 
-public:
-	TableOfContents();
-	~TableOfContents();
+        Options options;
+        void setOptions(Options options) { this->options = options; }
 
-	TableOfContentsOptions options;
-    void setOptions(TableOfContentsOptions options) { this->options = options; }
+        bool doAppend();
 
-    void setScribusDocument(ScribusDoc* scribusDoc) { this->scribusDoc = scribusDoc; }
-	bool doAppend();
-
-private:
-    ScribusDoc* scribusDoc;
+    private:
+        ScribusAPI::Document &document;
 
 };
 
+} // ScribusPlugin::TableOfContents
+}
+
+/*
 QDebug operator<<(QDebug dbg, const TableOfContentsOptions options);
 QDebug operator<<(QDebug dbg, const TableOfContentsItem item);
+*/
 
 #endif // TABLEOFCONTENTS_H

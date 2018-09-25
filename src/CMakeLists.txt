@@ -8,12 +8,12 @@ ${CMAKE_SOURCE_DIR}/scribus
 #)
 
 SET(SCRIBUS_TABLEOFCONTENTS_PLUGIN_MOC_CLASSES
-  tableofcontentsplugin.h
-  tableofcontents.h
+  plugin.h
+  # tableofcontents.h
 )
 
 SET(SCRIBUS_TABLEOFCONTENTS_PLUGIN_SOURCES
-  tableofcontentsplugin.cpp
+  plugin.cpp
   tableofcontents.cpp
 )
 
