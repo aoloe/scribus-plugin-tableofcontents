@@ -29,7 +29,7 @@ Clone the `scribus-plugin-tableofcontents` repository and put – or symlink –
 
     ADD_SUBDIRECTORY(tableofcontents)
 
-to `CMakeList.txt` file in `scribus/plugins/`.
+to `CMakeLists.txt` file in `scribus/plugins/`.
 
 In the [Getting started](https://github.com/aoloe/scribus-manual-development/blob/master/content/getting-started/getting-started.md) manual for Scribus developers, you'll find [more in details instructions](https://github.com/aoloe/scribus-manual-development/blob/master/content/getting-started/getting-started.md#adding-a-plugin-from-a-github-repository).
 
