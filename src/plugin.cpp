@@ -2,11 +2,17 @@
 
 #include "tableofcontents.h"
 
+#include <QPixmap>
+#include <QWidget>
+
 #include "scribuscore.h"
 #include "scribusdoc.h"
+#include "iconmanager.h"
+#include "ui/prefs_pane.h"
 
-#include "plugins/scribusAPI/scribus.h"
-#include "plugins/scribusAPI/document.h"
+#include "api/document.h"
+
+#include "ui/settings.h"
 
 int tableofcontentsplugin_getPluginAPIVersion()
 {
@@ -90,18 +96,15 @@ bool Plugin::run(ScribusDoc* doc, const QString& target)
 {
 
 	Q_ASSERT(target.isNull());
-    auto document = ScribusAPI::Scribus::getActiveDocument(doc);
+	auto document = ::API::Document::getActive();
 
-    if (!document.isOpen()) {
-        return false;
-    }
+	if (document == nullptr)
+		return false;
 
-    return true;
+	ScribusPlugin::TableOfContents::TableOfContents toc{document};
+	// return toc.doAppend();
 
-	auto toc = ScribusPlugin::TableOfContents::TableOfContents(document);
-    return toc.doAppend();
-
-    /*
+	/*
 	TableOfContents *tableofcontents = new TableOfContents();
 
 	tableofcontents->setScribusDocument(currDoc);
@@ -109,8 +112,21 @@ bool Plugin::run(ScribusDoc* doc, const QString& target)
 	bool success = tableofcontents->doAppend();
 	delete tableofcontents;
 	return success;
-    */
+	 */
+	return true;
 }
 
-} // ScribusPlugin::TableOfContents
+bool Plugin::newPrefsPanelWidget(QWidget* parent, Prefs_Pane*& panel)
+{
+    auto document = ::API::Document::getActive();
+	if (document == nullptr)
+		return false;
+
+	panel= new Settings(parent);
+	Q_CHECK_PTR(panel);
+	// connect(panel, SIGNAL(prefsChanged()), scripterCore, SLOT(updateSyntaxHighlighter()));
+	return true;
+}
+
+} // namespaces
 }

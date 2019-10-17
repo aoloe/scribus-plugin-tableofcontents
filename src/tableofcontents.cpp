@@ -2,9 +2,9 @@
 
 #include "scribusdoc.h"
 
-#include "plugins/scribusAPI/document.h"
-#include "plugins/scribusAPI/textFrame.h"
-#include "plugins/scribusAPI/textFormatting.h"
+#include "api/document.h"
+// #include "plugins/scribusAPI/textFrame.h"
+// #include "plugins/scribusAPI/textFormatting.h"
 /*
 #include "plugins/scribusAPI/scribusAPI.h"
 #include "plugins/scribusAPI/scribusAPIDocument.h"
@@ -42,35 +42,35 @@ TableOfContents::~TableOfContents()
  */
 bool TableOfContents::doAppend()
 {
-	auto documentItem = document.getActiveItem();
+	// auto documentItem = document.getActiveItem();
 
-    // documentItem is optional
-    if (!documentItem.has_value()) {
-        return false;
-    }
+    // // documentItem is optional
+    // if (!documentItem.has_value()) {
+    //     return false;
+    // }
 
-    if (!documentItem->isTextFrame()) {
-        return false;
-    }
+    // if (!documentItem->isTextFrame()) {
+    //     return false;
+    // }
 
-    auto tocFrame = documentItem->getTextFrame();
+    // auto tocFrame = documentItem->getTextFrame();
 
-    std::vector<Item> toc{};
+    // std::vector<Item> toc{};
 
-    for (int page = 0; page < document.getPageCount(); page++) {
-		auto pageNumber = document.getPageNumber(page);
-		for (auto& item: document.getPageItems(page)) {
-			if (!item.isTextFrame()) {
-				continue;
-            }
-			// TODO: skip items that are not on the page
-			// TODO: skip items that are not printable (layer too!)
-			ScribusAPI::TextFormatting formatting{item};
-			for (auto run: item.getTextFrame().getRuns())
-			{
-            }
-        }
-    }
+    // for (int page = 0; page < document.getPageCount(); page++) {
+	// 	auto pageNumber = document.getPageNumber(page);
+	// 	for (auto& item: document.getPageItems(page)) {
+	// 		if (!item.isTextFrame()) {
+	// 			continue;
+    //         }
+	// 		// TODO: skip items that are not on the page
+	// 		// TODO: skip items that are not printable (layer too!)
+	// 		ScribusAPI::TextFormatting formatting{item};
+	// 		for (auto run: item.getTextFrame().getRuns())
+	// 		{
+    //         }
+    //     }
+    // }
 
     /*
     ScribusAPIDocument* scribusDocument = new ScribusAPIDocument(this->scribusDoc);

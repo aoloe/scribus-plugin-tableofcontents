@@ -9,9 +9,15 @@
 #include "pluginapi.h"
 #include "scplugin.h"
 
+#include <memory>
+
 class QString;
 class ScribusDoc;
 class ScribusMainWindow;
+
+class QPixmap;
+class QWidget;
+class Prefs_Pane;
 
 namespace ScribusPlugin {
 namespace TableOfContents {
@@ -27,19 +33,21 @@ public:
 
 	// Standard plugin implementation
 	Plugin();
-	virtual ~Plugin();
+	~Plugin();
 	/*!
 	\author Ale Rimoldi
 	\brief Run the Table of Contents
 	\param filename a file to export to
 	\retval bool true
 	*/
-	virtual bool run(ScribusDoc* doc, const QString& filename = QString::null) override;
-	virtual const QString fullTrName() const override;
-	virtual const AboutData* getAboutData() const override;
-	virtual void deleteAboutData(const AboutData* about) const override;
-	virtual void languageChange() override;
-	virtual void addToMainWindowMenu(ScribusMainWindow *) override {};
+	bool run(ScribusDoc* doc, const QString& filename = QString::null) override;
+	const QString fullTrName() const override;
+	const AboutData* getAboutData() const override;
+	void deleteAboutData(const AboutData* about) const override;
+	void languageChange() override;
+	void addToMainWindowMenu(ScribusMainWindow *) override {};
+	bool newPrefsPanelWidget(QWidget* parent, Prefs_Pane*& panel) override;
+
 };
 
 } // ScribusPlugin::TableOfContents

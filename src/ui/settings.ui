@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ScribusPlugin::TableOfContents::Settings</class>
+ <widget class="QWidget" name="ScribusPlugin::TableOfContents::Settings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>318</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label_8">
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Table of Contents</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QComboBox" name="tableOfContentsList"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addTableOfContentsButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Add</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="deleteTableOfContentsButton">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QListWidget" name="levelList"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QPushButton" name="addLevelButton">
+       <property name="text">
+        <string>Add</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="deleteLevelButton">
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="levelDownButton">
+       <property name="text">
+        <string>↓</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="levelUpButton">
+       <property name="text">
+        <string>↑</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="levelGroup">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Heading Level:</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Heading</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="styleHeadingList">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="createStyleHeadingButton">
+          <property name="text">
+           <string>+</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Table of Contents</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="styleTocList">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="createStyleTocButton">
+          <property name="text">
+           <string>+</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Advanced</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="pageNumberLabel">
+             <property name="text">
+              <string>Page Number:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="pageNumberPositionList"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="PageNumberStyleLabel">
+             <property name="text">
+              <string>Character Style:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="pageNumberStyleList"/>
+           </item>
+           <item>
+            <widget class="QToolButton" name="createStylePageNumberButton">
+             <property name="text">
+              <string>+</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLabel" name="separatorLabel">
+             <property name="text">
+              <string>Custom Separator:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="separatorInput">
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="separatorStyleLabel">
+             <property name="text">
+              <string>Character Style</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="separatorStyleList"/>
+           </item>
+           <item>
+            <widget class="QToolButton" name="createStyleSeparatorButton">
+             <property name="text">
+              <string>+</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="filterLabel">
+             <property name="text">
+              <string>Filter:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="regexFilterInput"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="filterWidthLabel">
+             <property name="text">
+              <string>Width:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="tocItemLengthInput">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="filteCharsLabel">
+             <property name="text">
+              <string> chars</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

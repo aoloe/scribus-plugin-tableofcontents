@@ -5,12 +5,16 @@
 #ifndef TABLEOFCONTENTS_H
 #define TABLEOFCONTENTS_H
 
+#include "scplugin.h"
+#include "pluginapi.h"
+
 #include <string>
 #include <vector>
+#include <memory>
 
-#include "plugins/scribusAPI/document.h"
+#include "api/document.h"
 
-class ScribusDoc;
+class QString;
 
 namespace ScribusPlugin {
 namespace TableOfContents {
@@ -44,10 +48,11 @@ struct Item
 /**
  * @brief This is the main table of contents class. It gets called by `TableOfContentsPlugin` after the the export dialog.
  */
-class TableOfContents
+class TableOfContents : public QObject
 {
+	Q_OBJECT
     public:
-        TableOfContents(ScribusAPI::Document &document)
+        TableOfContents(std::shared_ptr<API::Document> document)
         : document{document}
         {}
         ~TableOfContents() {}
@@ -58,7 +63,7 @@ class TableOfContents
         bool doAppend();
 
     private:
-        ScribusAPI::Document &document;
+        std::shared_ptr<API::Document> document;
 
 };
 
