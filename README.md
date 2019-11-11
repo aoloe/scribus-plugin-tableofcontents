@@ -2,7 +2,7 @@
 
 Scan the document for styles named "h1", "h3", "h3" and append to the current text the titles with the page numbers and the styles "toc1", "toc2", and "toc3".
 
-This plugin is still in its very early stages. Please read the rest of this README for understanding how it works and how it will evolve.
+This plugin is still in its very early stages. Please read the rest of this README for understanding how it works and what are the current plans for its future.
 
 Create the table of content by selecting the text frame where you want it to appear and run "Insert > Table of Contents".
 
@@ -20,6 +20,50 @@ In order to run the plugin you have to:
 - Apply the style "h1", "h2", "h3" to some paragraphs.
 - Create a new text frame and select it.
 - Select the new text frame and run "Insert > Table of Contents"
+
+## Concepts
+
+### Three different concepts for inserting a TOC
+
+The easiest way to have a table of contents, is to get Scribus to fill a text frame with the relevant information.
+
+- The user needs to "manually" append the TOC to an existing text frame.
+- It relies on paragraph styles to find the paragraphs to be included in the TOC.
+- It relies on paragraph and character styles to layout out the TOC.
+- The content cannot be automatically updated. For an update, the user needs to replace the current TOC.
+- The user can tweak the content of the TOC at her will.
+
+This is the approach currently being implemented.
+
+An alternative approach is:
+
+- The user can define a frame to be the target for the TOC.
+- The user can update all TOCs at once.
+- The content of the frame can be edited, but an update will remove the changes.
+
+This is the approach implemented in Scribus-ECE
+
+A third approach is:
+
+- Insert the TOC as dynamic field inside of a text frame.
+- All tocs can be updated at once.
+- In some cases refreshing the TOC can lead to a change in the layout.
+- The user cannot edit the content of the TOC in any way.
+
+### Two different way for defining the TOC
+
+There are two main ways for defining the way the TOCs can be defined:
+
+- Open a dialog when inserting the TOC
+- Let the user define the TOC in the document configuration and only show a list of TOCs types when inserting the TOC.
+
+### Appending a predefined TOC as text to a frame
+
+The approach currently being implemented:
+
+- The TOCs are defined in the document configuraiton.
+- The TOCs are appended to the selected frame as formatted text.
+
 
 ## Implementation details
 
@@ -147,6 +191,7 @@ Not all details on the way this plugins should work are already defined. But her
 - In a book where you have multiple writers you might want their names to appear in the TOC, below the ChapterName, but with no page number associated to it. This can be solved by defining a fake level (with no page number)... but, maybe, there is a better solution.
 - Option to ignore the local formatting (which ones?) in the titles
 - Allow to grap the titles by char styles instead of paragraph styles
+- When inserting the toc, Scribus could retain the name of the selected frame. It could also keep a list of frames where it has found styles that belong in the TOC. If the "content" frames have a timestamp it can warn the user in the  preflight verifier (currently, scribus does have timestamps for the frames, but that would be trivial to add... and interesting for other uses, too)
 
 Corner cases:
 
